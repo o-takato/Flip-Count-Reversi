@@ -1,0 +1,79 @@
+:root {
+    --board-bg: #2e7d32;
+    --cell-border: #1b5e20;
+}
+
+body {
+    background-color: #f8fafc;
+    font-family: 'Hiragino Kaku Gothic ProN', sans-serif;
+    touch-action: manipulation;
+}
+
+.board-container {
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    max-width: 480px;
+    background-color: var(--cell-border);
+    padding: 6px;
+    border-radius: 12px;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    gap: 2px;
+}
+
+.cell {
+    background-color: var(--board-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.piece {
+    width: 88%;
+    height: 88%;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 800;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    user-select: none;
+}
+
+.piece.black {
+    background: radial-gradient(circle at 30% 30%, #444, #000);
+    color: white;
+}
+
+.piece.white {
+    background: radial-gradient(circle at 30% 30%, #fff, #ccc);
+    color: black;
+    border: 1px solid #aaa;
+}
+
+.hint-dot {
+    width: 14px;
+    height: 14px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.hint-dot:hover {
+    transform: scale(1.5);
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.active-turn {
+    box-shadow: 0 0 0 4px #2e7d32;
+    transform: translateY(-4px);
+}
+
+.modal-overlay {
+    background: rgba(15, 23, 42, 0.9);
+    backdrop-filter: blur(10px);
+}
